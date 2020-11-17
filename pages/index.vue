@@ -8,36 +8,7 @@
         <div class="content__country-lists">
           <div class="content__country-lists__filter"></div>
           <div class="content__country-lists__container">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Country</th>
-                  <th scope="col">Suburb</th>
-                  <th scope="col">Temp</th>
-                  <th scope="col">Temp feels like</th>
-                  <th scope="col">Wind</th>
-                  <th scope="col">Last Updated</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><input /></th>
-                  <td><input /></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr v-for="item in items.data" :key="item._venueID">
-                  <th scope="row">{{ item._country._countryID }}</th>
-                  <td>{{ item._name }}</td>
-                  <td>{{ item._weatherTemp }}</td>
-                  <td>{{ item._weatherFeelsLike }}</td>
-                  <td>{{ item._weatherWind }}</td>
-                  <td>{{ item._weatherLastUpdated }}</td>
-                </tr>
-              </tbody>
-            </table>
+            <WeatherListsComponent :items="items.data" />
           </div>
         </div>
       </div>
@@ -48,11 +19,20 @@
 <script lang="ts">
 import Vue from 'vue'
 import { data } from '../assets/data'
+import WeatherListsComponent from '../components/weather-lists.vue'
 export default Vue.extend({
+  components: {
+    WeatherListsComponent,
+  },
   data() {
     return {
       items: data,
     }
+  },
+  methods: {
+    goToDetailedInfo: (val: any): void => {
+      console.log(val)
+    },
   },
 })
 </script>
