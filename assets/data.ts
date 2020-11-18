@@ -1,4 +1,6 @@
-export const data = {
+import { WeatherResponse } from '~/models/weather.model'
+
+export const data: WeatherResponse = {
   ret: true,
   isOkay: true,
   data: [

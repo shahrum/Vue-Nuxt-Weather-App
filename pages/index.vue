@@ -8,7 +8,7 @@
         <div class="content__country-lists">
           <div class="content__country-lists__filter"></div>
           <div class="content__country-lists__container">
-            <WeatherListsComponent :items="items.data" />
+            <WeatherListsComponent />
           </div>
         </div>
       </div>
@@ -40,9 +40,9 @@ export default Vue.extend({
     // axios
     //   .get('http://dnu5embx6omws.cloudfront.net/venues/weather.json', config)
     //   .then((x) => console.log('y', x))
-    this.$axios
-      .$get('https://jsonplaceholder.typicode.com/todos')
-      .then((x: any) => console.log('x', x))
+    // this.$axios
+    //   .$get('https://jsonplaceholder.typicode.com/todos')
+    //   .then((x: any) => console.log('x', x))
   },
   methods: {
     goToDetailedInfo: (val: any): void => {
