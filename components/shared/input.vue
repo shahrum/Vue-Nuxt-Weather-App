@@ -24,45 +24,80 @@
 <script lang="ts">
 import Vue from 'vue'
 import SearchIcon from '../../assets/icons/search-icon.vue'
-export default Vue.extend({
+import { Component, Prop } from 'nuxt-property-decorator'
+@Component({
   name: 'InputFieldComponent',
   components: {
     SearchIcon,
   },
-  data() {
-    return {
-      show: false,
-    }
-  },
-  props: {
-    value: String,
-    label: String,
-    disabled: Boolean,
-    hint: String,
-    icon: String,
-    placeholder: String,
-    color: String,
-  },
-  methods: {
-    filled(): string {
-      if (!this.show && this.value) {
-        return 'has__content'
-      }
-      return ''
-    },
-    hasIcon(): string {
-      if (this.icon) {
-        return 'input__has__icon'
-      }
-      return ''
-    },
-    focusBorder(): { [key: string]: string } {
-      return {
-        'background-color': this.color,
-      }
-    },
-  },
 })
+export default class InputField extends Vue {
+  public show = false
+  @Prop({ required: false, default: '', type: String }) value
+  @Prop({ type: String, required: false, default: '' }) label
+  @Prop({ type: Boolean, required: false, default: false }) disabled
+  @Prop({ type: String, required: false, default: '' }) hint
+  @Prop({ type: String, required: false, default: '' }) icon
+  @Prop({ type: String, required: false, default: '' }) placeholder
+  @Prop({ type: String, required: false, default: 'indigo' }) color
+
+  public filled(): string {
+    if (!this.show && this.value) {
+      return 'has__content'
+    }
+    return ''
+  }
+  public hasIcon(): string {
+    if (this.icon) {
+      return 'input__has__icon'
+    }
+    return ''
+  }
+  public focusBorder(): { [key: string]: string } {
+    return {
+      'background-color': this.color,
+    }
+  }
+}
+// export default Vue.extend({
+//   name: 'InputFieldComponent',
+//   components: {
+//     SearchIcon,
+//   },
+//   data() {
+//     return {
+//       show: false,
+//     }
+//   },
+//   props: {
+//     value: String,
+//     label: String,
+//     disabled: Boolean,
+//     hint: String,
+//     icon: String,
+//     placeholder: String,
+//     color: String,
+//   },
+//   methods: {
+//     filled(): string {
+//       if (!this.show && this.value) {
+//         return 'has__content'
+//       }
+//       return ''
+//     },
+//     hasIcon(): string {
+//       if (this.icon) {
+//         return 'input__has__icon'
+//       }
+//       return ''
+//     },
+//     focusBorder(): { [key: string]: string } {
+//       return {
+//         'background-color': this.color,
+//       }
+//     },
+//   },
+// })
 </script>
 
 <style lang="scss" scoped>

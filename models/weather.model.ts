@@ -4,7 +4,7 @@ export interface WeatherResponse {
   data: WeatherResponseData[]
 }
 
-interface WeatherResponseData {
+export interface WeatherResponseData {
   _venueID: string
   _name: string
   _country: {
