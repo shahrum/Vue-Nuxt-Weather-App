@@ -37,18 +37,7 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {
-    // BaseURL: 'http://dnu5embx6omws.cloudfront.net/',
-    // Default
-    proxy: true,
-  },
-  proxy: {
-    '/dnu5embx6omws/': {
-      target: 'http://dnu5embx6omws.cloudfront.net/',
-      pathRewrite: { '^/dnu5embx6omws/': '' },
-      changeOrigin: true,
-    },
-  },
+  axios: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},

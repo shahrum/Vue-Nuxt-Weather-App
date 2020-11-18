@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "mydev": "nuxt --hostname myhost --port 3000",
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",

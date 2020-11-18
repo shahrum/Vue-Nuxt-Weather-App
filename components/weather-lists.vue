@@ -31,7 +31,7 @@
           :key="item._venueID"
           @click="goToDetailedInfo(item)"
         >
-          <th scope="row">{{ item._country._name }}</th>
+          <td scope="row">{{ item._country._name }}</td>
           <td>{{ item._name }}</td>
           <td>{{ item._weatherCondition }}</td>
           <td>{{ item._weatherTemp }}</td>
@@ -52,6 +52,7 @@ import Vector from '../assets/icons/Vector.vue'
 import { convertDate } from '../helpers/helpers'
 import { Component, Prop } from 'nuxt-property-decorator'
 import { WeatherResponseData } from '../models/weather.model'
+import axios from '@nuxtjs/axios'
 @Component({
   name: 'WeatherListsComponent',
   components: {
@@ -97,8 +98,18 @@ export default class WeatherListsComponent extends Vue {
   }
 
   created(): void {
-    this.items = data.data
-    this.alteredData = this.items
+    this.$axios
+      .$get('http://dnu5embx6omws.cloudfront.net/venues/weather.json')
+      .then((response: any) => {
+        this.items = response.data.data
+        this.alteredData = this.items
+      })
+      .catch((err) => {
+        console.log(err)
+
+        this.items = data.data
+        this.alteredData = this.items
+      })
   }
 
   public goToDetailedInfo(val: any): void {
