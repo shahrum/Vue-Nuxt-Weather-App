@@ -4,7 +4,6 @@
       <!-- <Logo /> -->
       <h1 class="title">Weather</h1>
       <div class="content">
-        <div class="content__header">Header goes here...</div>
         <div class="content__country-lists">
           <div class="content__country-lists__filter"></div>
           <div class="content__country-lists__container">
