@@ -20,6 +20,7 @@
 import Vue from 'vue'
 import { data } from '../assets/data'
 import WeatherListsComponent from '../components/weather-lists.vue'
+import axios from 'axios'
 export default Vue.extend({
   components: {
     WeatherListsComponent,
@@ -28,6 +29,20 @@ export default Vue.extend({
     return {
       items: data,
     }
+  },
+  created() {
+    // fetch('http://dnu5embx6omws.cloudfront.net/venues/weather.json').then((x) =>
+    //   console.log('y', x)
+    // )
+    const config = {
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    }
+    // axios
+    //   .get('http://dnu5embx6omws.cloudfront.net/venues/weather.json', config)
+    //   .then((x) => console.log('y', x))
+    this.$axios
+      .$get('https://jsonplaceholder.typicode.com/todos')
+      .then((x: any) => console.log('x', x))
   },
   methods: {
     goToDetailedInfo: (val: any): void => {
